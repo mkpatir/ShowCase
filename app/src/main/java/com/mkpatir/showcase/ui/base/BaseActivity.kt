@@ -4,8 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.mkpatir.spacedelivery.ui.base.BaseViewModel
-import com.mkpatir.spacedelivery.ui.base.LoadingFullScreen
 
 abstract class BaseActivity<D: ViewDataBinding,VM: BaseViewModel>: AppCompatActivity() {
 
