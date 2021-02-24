@@ -11,7 +11,7 @@ ext{
     koinVersion = "2.1.5"
     retrofitVersion = "2.9.0"
     loggingInterceptorVersion = "4.7.2"
-    lottieVersion = "3.4.1"
+    lottieVersion = "3.6.1"
 
     androidDependencies = [
             appCompat           :"androidx.appcompat:appcompat:$appCompatVersion",
