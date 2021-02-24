@@ -39,7 +39,7 @@ android {
 
 dependencies {
     def androidDependencies = rootProject.ext.androidDependencies
-    def thirdPartyDependencies = rootProject.ext.thirdPartDependencies
+    def thirdPartyDependencies = rootProject.ext.thirdPartyDependencies
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
@@ -58,6 +58,7 @@ dependencies {
     implementation thirdPartyDependencies.retrofit
     implementation thirdPartyDependencies.retrofitConverter
     implementation thirdPartyDependencies.loggingInterceptor
+    implementation thirdPartyDependencies.lottie
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

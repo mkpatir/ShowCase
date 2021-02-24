@@ -11,6 +11,7 @@ ext{
     koinVersion = "2.1.5"
     retrofitVersion = "2.9.0"
     loggingInterceptorVersion = "4.7.2"
+    lottieVersion = "3.4.1"
 
     androidDependencies = [
             appCompat           :"androidx.appcompat:appcompat:$appCompatVersion",
@@ -23,12 +24,13 @@ ext{
             recyclerView        :"androidx.recyclerview:recyclerview:${recyclerViewVersion}"
     ]
 
-    thirdPartDependencies = [
+    thirdPartyDependencies = [
             koin                :"org.koin:koin-android:$koinVersion",
             koinScope           :"org.koin:koin-androidx-scope:$koinVersion",
             koinViewModel       :"org.koin:koin-androidx-viewmodel:$koinVersion",
             retrofit            :"com.squareup.retrofit2:retrofit:$retrofitVersion",
             retrofitConverter   :"com.squareup.retrofit2:converter-gson:$retrofitVersion",
-            loggingInterceptor  :"com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+            loggingInterceptor  :"com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion",
+            lottie              :"com.airbnb.android:lottie:$lottieVersion"
     ]
 }
