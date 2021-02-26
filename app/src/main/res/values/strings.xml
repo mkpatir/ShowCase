@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ShowCase</string>
     <string name="all">TÜMÜ</string>
+    <string name="btn_go_showcase">VİTRİNE GİT</string>
 </resources>

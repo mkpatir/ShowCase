@@ -16,4 +16,21 @@
     <dimen name="font_large">16sp</dimen>
     <dimen name="font_x_large">24sp</dimen>
 
+    <!-- Products -->
+    <dimen name="height_product_card_view">240dp</dimen>
+    <dimen name="width_product_card_view">180dp</dimen>
+
+    <!-- Categories -->
+    <dimen name="size_category_card_view">120dp</dimen>
+
+    <!-- Collections -->
+    <dimen name="height_img_collection">126dp</dimen>
+    <dimen name="width_img_collection">240dp</dimen>
+
+    <!-- Editor Shops -->
+    <dimen name="height_editor_shop_card_view">210dp</dimen>
+    <dimen name="width_editor_shop_card_view">300dp</dimen>
+    <dimen name="top_margin_editor_shop_img">36dp</dimen>
+    <dimen name="size_shop_logo">48dp</dimen>
+
 </resources>

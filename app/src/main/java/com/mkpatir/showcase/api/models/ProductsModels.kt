@@ -48,7 +48,7 @@ data class ShopModel(
     @SerializedName("follower_count") val followerCount: Int?,
     @SerializedName("is_editor_choice") val isEditorChoice: Boolean?,
     @SerializedName("is_following") val isFollowing: Boolean?,
-    @SerializedName("cover") val coverPhoto: PhotoModel,
+    @SerializedName("cover") val coverPhoto: PhotoModel?,
     @SerializedName("share_url") val shareUrl: String?,
-    @SerializedName("logo") val logo: PhotoModel,
+    @SerializedName("logo") val logo: PhotoModel?
 )

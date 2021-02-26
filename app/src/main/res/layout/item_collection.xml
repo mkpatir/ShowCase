@@ -24,8 +24,8 @@
 
             <ImageView
                 android:id="@+id/img_collection"
-                android:layout_width="240dp"
-                android:layout_height="126dp"
+                android:layout_width="@dimen/width_img_collection"
+                android:layout_height="@dimen/height_img_collection"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:src="@color/teal_200"

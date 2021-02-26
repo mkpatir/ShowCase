@@ -2,14 +2,21 @@ package com.mkpatir.showcase.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
 import com.mkpatir.showcase.api.models.CategoryModel
 import com.mkpatir.showcase.api.models.CollectionModel
 import com.mkpatir.showcase.api.models.ProductModel
+import com.mkpatir.showcase.api.models.ShopModel
 import com.mkpatir.showcase.databinding.LayoutGeneralBinding
 import com.mkpatir.showcase.internal.extension.invisible
+import com.mkpatir.showcase.internal.extension.loadImageFromUrl
+import com.mkpatir.showcase.internal.extension.visible
 import com.mkpatir.showcase.ui.home.categories.CategoryItemAdapter
 import com.mkpatir.showcase.ui.home.collections.CollectionItemAdapter
+import com.mkpatir.showcase.ui.home.editorshops.EditorShopItemAdapter
 import com.mkpatir.showcase.ui.home.products.ProductItemAdapter
 
 class GeneralAdapter(
@@ -19,6 +26,7 @@ class GeneralAdapter(
     private var productItems: ArrayList<ProductModel> = arrayListOf()
     private var categoryItems: ArrayList<CategoryModel> = arrayListOf()
     private var collectionItems: ArrayList<CollectionModel> = arrayListOf()
+    private var shopItems: ArrayList<ShopModel> = arrayListOf()
     private var title = ""
     internal var allClick:() -> Unit = {}
 
@@ -65,6 +73,37 @@ class GeneralAdapter(
         }
     }
 
+    inner class EditorShopsViewHolder(private val dataBinding: LayoutGeneralBinding): RecyclerView.ViewHolder(dataBinding.root){
+
+        fun bind(){
+            dataBinding.apply {
+                alphaView.visible()
+                imgGeneral.loadImageFromUrl(shopItems[0].coverPhoto?.url.orEmpty())
+                rvItems.adapter = EditorShopItemAdapter().apply {
+                    updateAdapter(shopItems)
+                }
+                LinearSnapHelper().apply {
+                    attachToRecyclerView(rvItems)
+                }
+                rvItems.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                    override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                        if (newState == SCROLL_STATE_IDLE){
+                            val currentPosition = (rvItems.layoutManager as LinearLayoutManager).findFirstCompletelyVisibleItemPosition()
+                            if (currentPosition >= 0 && currentPosition < shopItems.size){
+                                imgGeneral.loadImageFromUrl(shopItems[currentPosition].coverPhoto?.url.orEmpty())
+                            }
+                        }
+                        super.onScrollStateChanged(recyclerView, newState)
+                    }
+                })
+                titleProducts.text = title
+                btnAll.setOnClickListener {
+                    allClick()
+                }
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = LayoutGeneralBinding.inflate(layoutInflater,parent,false)
@@ -78,6 +117,9 @@ class GeneralAdapter(
             DiscoverTypes.COLLECTIONS -> {
                 CollectionsViewHolder(binding)
             }
+            DiscoverTypes.EDITOR_SHOPS -> {
+                EditorShopsViewHolder(binding)
+            }
         }
     }
 
@@ -86,6 +128,7 @@ class GeneralAdapter(
             is ProductViewHolder -> holder.bind()
             is CategoriesViewHolder -> holder.bind()
             is CollectionsViewHolder -> holder.bind()
+            is EditorShopsViewHolder -> holder.bind()
         }
     }
 
@@ -93,6 +136,7 @@ class GeneralAdapter(
         DiscoverTypes.NEW_PRODUCTS -> if (productItems.isEmpty()) 0 else 1
         DiscoverTypes.CATEGORIES -> if (categoryItems.isEmpty()) 0 else 1
         DiscoverTypes.COLLECTIONS -> if (collectionItems.isEmpty()) 0 else 1
+        DiscoverTypes.EDITOR_SHOPS -> if (shopItems.isEmpty()) 0 else 1
     }
 
     fun updateProductAdapter(items: ArrayList<ProductModel>,title: String){
@@ -112,6 +156,13 @@ class GeneralAdapter(
     fun updateCollectionAdapter(items: ArrayList<CollectionModel>,title: String){
         collectionItems.clear()
         collectionItems.addAll(items)
+        this.title = title
+        notifyDataSetChanged()
+    }
+
+    fun updateShopAdapter(items: ArrayList<ShopModel>,title: String){
+        shopItems.clear()
+        shopItems.addAll(items)
         this.title = title
         notifyDataSetChanged()
     }
