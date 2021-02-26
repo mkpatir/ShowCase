@@ -19,7 +19,6 @@
             android:id="@+id/rv_content"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:paddingBottom="@dimen/margin_normal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintTop_toBottomOf="@id/search_view"
             app:layout_constraintBottom_toBottomOf="parent"

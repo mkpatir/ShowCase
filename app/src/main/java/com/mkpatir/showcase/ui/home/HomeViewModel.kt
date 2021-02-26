@@ -14,11 +14,13 @@ class HomeViewModel(
     val categoriesLiveData = MutableLiveData<ArrayList<CategoryModel>>()
     val collectionsLiveData = MutableLiveData<ArrayList<CollectionModel>>()
     val editorShopsLiveData = MutableLiveData<ArrayList<ShopModel>>()
+    val newShopsLiveData = MutableLiveData<ArrayList<ShopModel>>()
 
     var productsTitle = ""
     var categoryTitle = ""
     var collectionTitle = ""
     var editorShopTitle = ""
+    var newShopTitle = ""
 
     fun discover(){
         callService(appRepository.discover()) { list ->
@@ -39,6 +41,10 @@ class HomeViewModel(
                 editorShopTitle = it.title.orEmpty()
                 editorShopsLiveData.postValue(it.shops)
             }
+            list.find { item -> item.type == NEW_SHOPS }?.let {
+                newShopTitle = it.title.orEmpty()
+                newShopsLiveData.postValue(it.shops)
+            }
         }
     }
 
@@ -48,6 +54,7 @@ class HomeViewModel(
         private const val CATEGORIES = "categories"
         private const val COLLECTIONS = "collections"
         private const val EDITOR_SHOPS = "editor_shops"
+        private const val NEW_SHOPS = "new_shops"
     }
 
 }

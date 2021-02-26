@@ -1,11 +1,14 @@
 package com.mkpatir.showcase.ui.home
 
+import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE
+import com.mkpatir.showcase.R
 import com.mkpatir.showcase.api.models.CategoryModel
 import com.mkpatir.showcase.api.models.CollectionModel
 import com.mkpatir.showcase.api.models.ProductModel
@@ -17,6 +20,7 @@ import com.mkpatir.showcase.internal.extension.visible
 import com.mkpatir.showcase.ui.home.categories.CategoryItemAdapter
 import com.mkpatir.showcase.ui.home.collections.CollectionItemAdapter
 import com.mkpatir.showcase.ui.home.editorshops.EditorShopItemAdapter
+import com.mkpatir.showcase.ui.home.newshops.NewShopItemAdapter
 import com.mkpatir.showcase.ui.home.products.ProductItemAdapter
 
 class GeneralAdapter(
@@ -52,6 +56,7 @@ class GeneralAdapter(
                 rvItems.adapter = CategoryItemAdapter().apply {
                     updateAdapter(categoryItems)
                 }
+                imgGeneral.setImageDrawable(ColorDrawable(ContextCompat.getColor(imgGeneral.context, R.color.blue_grey_50)))
                 titleProducts.text = title
                 btnAll.invisible()
             }
@@ -104,6 +109,21 @@ class GeneralAdapter(
         }
     }
 
+    inner class NewShopsViewHolder(private val dataBinding: LayoutGeneralBinding): RecyclerView.ViewHolder(dataBinding.root){
+
+        fun bind(){
+            dataBinding.apply {
+                rvItems.adapter = NewShopItemAdapter().apply {
+                    updateAdapter(shopItems)
+                }
+                titleProducts.text = title
+                btnAll.setOnClickListener {
+                    allClick()
+                }
+            }
+        }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = LayoutGeneralBinding.inflate(layoutInflater,parent,false)
@@ -120,6 +140,9 @@ class GeneralAdapter(
             DiscoverTypes.EDITOR_SHOPS -> {
                 EditorShopsViewHolder(binding)
             }
+            DiscoverTypes.NEW_SHOPS -> {
+                NewShopsViewHolder(binding)
+            }
         }
     }
 
@@ -129,6 +152,7 @@ class GeneralAdapter(
             is CategoriesViewHolder -> holder.bind()
             is CollectionsViewHolder -> holder.bind()
             is EditorShopsViewHolder -> holder.bind()
+            is NewShopsViewHolder -> holder.bind()
         }
     }
 
@@ -137,6 +161,7 @@ class GeneralAdapter(
         DiscoverTypes.CATEGORIES -> if (categoryItems.isEmpty()) 0 else 1
         DiscoverTypes.COLLECTIONS -> if (collectionItems.isEmpty()) 0 else 1
         DiscoverTypes.EDITOR_SHOPS -> if (shopItems.isEmpty()) 0 else 1
+        DiscoverTypes.NEW_SHOPS -> if (shopItems.isEmpty()) 0 else 1
     }
 
     fun updateProductAdapter(items: ArrayList<ProductModel>,title: String){

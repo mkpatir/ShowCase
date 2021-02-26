@@ -28,9 +28,12 @@
     <dimen name="width_img_collection">240dp</dimen>
 
     <!-- Editor Shops -->
-    <dimen name="height_editor_shop_card_view">210dp</dimen>
     <dimen name="width_editor_shop_card_view">300dp</dimen>
     <dimen name="top_margin_editor_shop_img">36dp</dimen>
     <dimen name="size_shop_logo">48dp</dimen>
+
+    <!-- New Shops -->
+    <dimen name="width_new_shop_card_view">280dp</dimen>
+    <dimen name="size_first_char_shop">32dp</dimen>
 
 </resources>

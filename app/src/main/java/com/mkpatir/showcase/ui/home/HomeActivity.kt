@@ -17,12 +17,14 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     private val categoriesAdapter = GeneralAdapter(DiscoverTypes.CATEGORIES)
     private val collectionsAdapter = GeneralAdapter(DiscoverTypes.COLLECTIONS)
     private val editorShopsAdapter = GeneralAdapter(DiscoverTypes.EDITOR_SHOPS)
+    private val newShopsAdapter = GeneralAdapter(DiscoverTypes.NEW_SHOPS)
     private val contentAdapter = ConcatAdapter(
         featuredAdapter,
         productsAdapter,
         categoriesAdapter,
         collectionsAdapter,
-        editorShopsAdapter
+        editorShopsAdapter,
+        newShopsAdapter
     )
 
     override fun setLayout(): Int = R.layout.activity_home
@@ -70,6 +72,10 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
             editorShopsLiveData.observe(this@HomeActivity){
                 editorShopsAdapter.updateShopAdapter(it,getViewModel().editorShopTitle)
+            }
+
+            newShopsLiveData.observe(this@HomeActivity){
+                newShopsAdapter.updateShopAdapter(it,getViewModel().newShopTitle)
             }
         }
     }

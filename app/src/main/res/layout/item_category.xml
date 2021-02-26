@@ -36,10 +36,15 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_category"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:text="@{viewState.categoryName}"
+                android:textColor="@color/white"
+                android:textAppearance="@style/BigTextAppearance"
+                android:gravity="center"
+                android:maxLines="2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
