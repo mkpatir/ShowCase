@@ -26,6 +26,7 @@
                 android:id="@+id/img_product"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintDimensionRatio="1:1"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +37,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/name_product"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
                 android:text="@{viewState.productName}"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/MediumTextAppearance.Bold"
                 app:layout_constraintTop_toBottomOf="@id/img_product"
                 app:layout_constraintBottom_toTopOf="@id/shop_name_product"
                 app:layout_constraintStart_toStartOf="parent"
@@ -47,9 +52,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/shop_name_product"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
                 android:text="@{viewState.shopName}"
+                android:textAppearance="@style/MediumTextAppearance"
+                android:lines="1"
+                android:ellipsize="end"
                 app:layout_constraintTop_toBottomOf="@id/name_product"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

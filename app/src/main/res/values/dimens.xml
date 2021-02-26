@@ -24,8 +24,8 @@
     <dimen name="size_category_card_view">120dp</dimen>
 
     <!-- Collections -->
-    <dimen name="height_img_collection">126dp</dimen>
-    <dimen name="width_img_collection">240dp</dimen>
+    <dimen name="height_img_collection">150dp</dimen>
+    <dimen name="width_img_collection">300dp</dimen>
 
     <!-- Editor Shops -->
     <dimen name="width_editor_shop_card_view">300dp</dimen>
