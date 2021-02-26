@@ -8,8 +8,8 @@ data class CategoryModel(
     @SerializedName("parent_id") val parentId: Int?,
     @SerializedName("order") val order: Int?,
     @SerializedName("parent_category") val parentCategory: ParentCategoryModel?,
-    @SerializedName("logo") val logo: PhotoModel,
-    @SerializedName("cover") val coverPhoto: PhotoModel,
+    @SerializedName("logo") val logo: PhotoModel?,
+    @SerializedName("cover") val coverPhoto: PhotoModel?,
     @SerializedName("children") val children: ArrayList<CategoryModel>?
 )
 

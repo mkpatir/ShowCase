@@ -59,6 +59,8 @@ dependencies {
     implementation thirdPartyDependencies.retrofitConverter
     implementation thirdPartyDependencies.loggingInterceptor
     implementation thirdPartyDependencies.lottie
+    implementation thirdPartyDependencies.glide
+    annotationProcessor thirdPartyDependencies.glideCompailer
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

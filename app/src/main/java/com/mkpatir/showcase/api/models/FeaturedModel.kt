@@ -7,5 +7,5 @@ data class FeaturedModel(
     @SerializedName("type") val type: String?,
     @SerializedName("cover") val coverPhoto: PhotoModel?,
     @SerializedName("title") val title: String?,
-    @SerializedName("sub_title") val subtitle: String?,
+    @SerializedName("sub_title") val subtitle: String?
 )
