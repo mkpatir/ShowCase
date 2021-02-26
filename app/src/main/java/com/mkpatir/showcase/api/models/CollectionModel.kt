@@ -9,6 +9,6 @@ data class CollectionModel(
     @SerializedName("start") val startTime: String?,
     @SerializedName("end") val endTime: String?,
     @SerializedName("share_url") val shareUrl: String?,
-    @SerializedName("cover") val coverPhoto: PhotoModel,
-    @SerializedName("logo") val logo: PhotoModel
+    @SerializedName("cover") val coverPhoto: PhotoModel?,
+    @SerializedName("logo") val logo: PhotoModel?
 )
