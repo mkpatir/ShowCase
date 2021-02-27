@@ -3,11 +3,13 @@ package com.mkpatir.showcase.ui.showall
 import android.content.Context
 import android.content.Intent
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mkpatir.showcase.R
 import com.mkpatir.showcase.api.models.DiscoverResponseModel
 import com.mkpatir.showcase.databinding.ActivityShowAllBinding
 import com.mkpatir.showcase.ui.base.BaseActivity
 import com.mkpatir.showcase.ui.home.DiscoverTypes
+import com.mkpatir.showcase.ui.home.collections.CollectionItemAdapter
 import com.mkpatir.showcase.ui.home.products.ProductItemAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -49,6 +51,12 @@ class ShowAllActivity: BaseActivity<ActivityShowAllBinding,ShowAllViewModel>() {
                         rvContent.layoutManager = GridLayoutManager(rvContent.context,2)
                         rvContent.adapter = ProductItemAdapter().apply {
                             updateAdapter(getViewModel().getNewProductsList(),true)
+                        }
+                    }
+                    DiscoverTypes.COLLECTIONS -> {
+                        rvContent.layoutManager = LinearLayoutManager(rvContent.context)
+                        rvContent.adapter = CollectionItemAdapter().apply {
+                            updateAdapter(getViewModel().getCollectionsList(),true)
                         }
                     }
                 }

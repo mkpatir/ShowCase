@@ -87,7 +87,7 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         }
 
         collectionsAdapter.allClick = {
-
+            ShowAllActivity.startActivity(this,DiscoverTypes.COLLECTIONS,getViewModel().collectionTitle,getViewModel().discoverList)
         }
 
         editorShopsAdapter.allClick = {
