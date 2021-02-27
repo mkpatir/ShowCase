@@ -1,6 +1,8 @@
 package com.mkpatir.showcase.ui.splash
 
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import com.mkpatir.showcase.R
 import com.mkpatir.showcase.databinding.ActivitySplashBinding
 import com.mkpatir.showcase.ui.base.BaseActivity
@@ -15,7 +17,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding,EmptyViewModel>() {
     override fun setViewModel(): Lazy<EmptyViewModel> = viewModel()
 
     override fun setupUI() {
-        startActivity(Intent(this,HomeActivity::class.java))
+        Handler(Looper.getMainLooper()).postDelayed({
+            startActivity(Intent(this,HomeActivity::class.java))
+            finish()
+        },1000L)
     }
 
 }
