@@ -40,6 +40,7 @@
             android:layout_marginEnd="@dimen/margin_small"
             android:lines="1"
             android:ellipsize="end"
+            android:textColor="@color/grey_700"
             app:layout_constraintTop_toTopOf="@id/btn_all"
             app:layout_constraintBottom_toBottomOf="@id/btn_all"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,6 +54,7 @@
             android:layout_margin="@dimen/margin_normal"
             android:gravity="center"
             android:text="@string/all"
+            android:textColor="@color/grey_700"
             android:drawableEnd="@drawable/ic_arrow_forward"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>

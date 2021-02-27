@@ -10,4 +10,5 @@
     <color name="black_50">#80000000</color>
     <color name="orange_a700">#FF6D00</color>
     <color name="blue_grey_50">#ECEFF1</color>
+    <color name="grey_700">#616161</color>
 </resources>

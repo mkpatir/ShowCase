@@ -32,6 +32,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@color/white"
                 android:paddingTop="@dimen/margin_large">
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -115,6 +116,7 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:text="@string/btn_go_showcase"
                     android:textColor="@color/black_50"
+                    app:strokeColor="@color/black_50"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>

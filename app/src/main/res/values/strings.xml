@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">ShowCase</string>
     <string name="all">TÜMÜ</string>
+    <string name="hint_search">Ürün veya Vitrin Ara</string>
     <string name="btn_go_showcase">VİTRİNE GİT</string>
     <string name="product_count">%1d ÜRÜN</string>
 </resources>
