@@ -10,6 +10,7 @@ import com.mkpatir.showcase.databinding.ActivityShowAllBinding
 import com.mkpatir.showcase.ui.base.BaseActivity
 import com.mkpatir.showcase.ui.home.DiscoverTypes
 import com.mkpatir.showcase.ui.home.collections.CollectionItemAdapter
+import com.mkpatir.showcase.ui.home.newshops.NewShopItemAdapter
 import com.mkpatir.showcase.ui.home.products.ProductItemAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -57,6 +58,18 @@ class ShowAllActivity: BaseActivity<ActivityShowAllBinding,ShowAllViewModel>() {
                         rvContent.layoutManager = LinearLayoutManager(rvContent.context)
                         rvContent.adapter = CollectionItemAdapter().apply {
                             updateAdapter(getViewModel().getCollectionsList(),true)
+                        }
+                    }
+                    DiscoverTypes.EDITOR_SHOPS -> {
+                        rvContent.layoutManager = LinearLayoutManager(rvContent.context)
+                        rvContent.adapter = NewShopItemAdapter().apply {
+                            updateAdapter(getViewModel().getEditorShopsList(),true)
+                        }
+                    }
+                    DiscoverTypes.NEW_SHOPS -> {
+                        rvContent.layoutManager = LinearLayoutManager(rvContent.context)
+                        rvContent.adapter = NewShopItemAdapter().apply {
+                            updateAdapter(getViewModel().getNewShopsList(),true)
                         }
                     }
                 }

@@ -26,7 +26,6 @@ class CollectionItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
         fun bind(item: CollectionModel){
             dataBinding.viewState = CollectionViewState(item)
-            fromLeftToRightAnimation(dataBinding.root)
         }
     }
 
@@ -66,7 +65,7 @@ class CollectionItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun fromLeftToRightAnimation(itemView: View) {
-        if (enabledAnimation && isFullWidthCollection.not()){
+        if (enabledAnimation){
             itemView.translationX = 500f
             itemView.animate().apply {
                 translationX(0f)

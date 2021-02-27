@@ -91,11 +91,11 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         }
 
         editorShopsAdapter.allClick = {
-
+            ShowAllActivity.startActivity(this,DiscoverTypes.EDITOR_SHOPS,getViewModel().editorShopTitle,getViewModel().discoverList)
         }
 
         newShopsAdapter.allClick = {
-
+            ShowAllActivity.startActivity(this,DiscoverTypes.NEW_SHOPS,getViewModel().newShopTitle,getViewModel().discoverList)
         }
     }
 

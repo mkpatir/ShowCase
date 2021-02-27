@@ -25,7 +25,6 @@ class ProductItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     inner class FullWidthProductItemViewHolder(private val dataBinding: ItemProductFullWidthBinding): RecyclerView.ViewHolder(dataBinding.root){
 
         fun bind(item: ProductModel){
-            fromLeftToRightAnimation(dataBinding.root)
             dataBinding.viewState = ProductViewState(item)
         }
     }
@@ -67,7 +66,7 @@ class ProductItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     private fun fromLeftToRightAnimation(itemView: View) {
-        if (enabledAnimation && isFullWidthProduct.not()){
+        if (enabledAnimation){
             itemView.translationX = 500f
             itemView.animate().apply {
                 translationX(0f)

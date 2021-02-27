@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewState"
+            type="com.mkpatir.showcase.ui.home.newshops.NewShopViewState" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="@dimen/margin_normal"
+        android:layout_marginHorizontal="@dimen/margin_x_small"
+        app:cardCornerRadius="4dp"
+        android:elevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="ContentDescription">
+
+            <ImageView
+                android:id="@+id/img_shop"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="8:3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@color/teal_200"
+                imgUrl="@{viewState.shopImageUrl}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/first_char_shop"
+                android:layout_width="@dimen/size_first_char_shop"
+                android:layout_height="@dimen/size_first_char_shop"
+                android:layout_margin="@dimen/margin_normal"
+                android:gravity="center"
+                android:background="@drawable/bg_oval_orange"
+                android:text="@{viewState.firstCharShop}"
+                android:textColor="@color/white"
+                android:textAppearance="@style/MediumTextAppearance"
+                android:visibility="@{viewState.showLogoImg ? View.INVISIBLE : View.VISIBLE}"
+                app:layout_constraintTop_toBottomOf="@id/img_shop"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="A"/>
+
+            <ImageView
+                android:id="@+id/img_shop_logo"
+                android:layout_width="@dimen/size_first_char_shop"
+                android:layout_height="@dimen/size_first_char_shop"
+                android:layout_margin="@dimen/margin_normal"
+                android:background="@drawable/bg_oval_blue_grey"
+                android:visibility="@{viewState.showLogoImg ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toBottomOf="@id/img_shop"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/bg_oval_orange"
+                tools:visibility="gone"
+                circleImgUrl="@{viewState.shopLogoUrl}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:ellipsize="end"
+                android:lines="1"
+                android:text="@{viewState.shopName}"
+                android:textAppearance="@style/BigTextAppearance"
+                app:fontFamily="More Fonts..."
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/first_char_shop"
+                app:layout_constraintTop_toBottomOf="@id/img_shop"
+                tools:text="Ahsapevi" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/definition_shop"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_x_small"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:lines="1"
+                android:ellipsize="end"
+                android:text="@{viewState.definition}"
+                android:textAppearance="@style/MediumTextAppearance"
+                app:layout_constraintTop_toBottomOf="@id/name_shop"
+                app:layout_constraintStart_toEndOf="@id/first_char_shop"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Evinizde kullanabileceğiniz ev yapımı"/>
+
+            <ImageView
+                android:id="@+id/ic_tshirt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_small"
+                app:layout_constraintTop_toBottomOf="@id/definition_shop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@id/name_shop"
+                android:src="@drawable/ic_tshirt"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/count_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_small"
+                android:text="@{viewState.productCount}"
+                android:textAppearance="@style/MediumTextAppearance"
+                app:layout_constraintTop_toTopOf="@id/ic_tshirt"
+                app:layout_constraintBottom_toBottomOf="@id/ic_tshirt"
+                app:layout_constraintStart_toEndOf="@id/ic_tshirt"
+                tools:text="5 ÜRÜN"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
