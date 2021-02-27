@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewState"
+            type="com.mkpatir.showcase.ui.home.products.ProductViewState" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_product_card_view"
+        android:layout_marginVertical="@dimen/margin_normal"
+        android:layout_marginHorizontal="@dimen/margin_x_small"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_product"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:src="@color/teal_200"
+                tools:ignore="ContentDescription"
+                imgUrl="@{viewState.productImageUrl}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:text="@{viewState.productName}"
+                android:lines="1"
+                android:ellipsize="end"
+                android:textAppearance="@style/MediumTextAppearance.Bold"
+                app:layout_constraintTop_toBottomOf="@id/img_product"
+                app:layout_constraintBottom_toTopOf="@id/shop_name_product"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Göz Küpe"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/shop_name_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_normal"
+                android:text="@{viewState.shopName}"
+                android:textAppearance="@style/MediumTextAppearance"
+                android:lines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@id/name_product"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="Menessa"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

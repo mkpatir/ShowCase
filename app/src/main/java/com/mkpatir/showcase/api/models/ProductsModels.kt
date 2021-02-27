@@ -1,7 +1,10 @@
 package com.mkpatir.showcase.api.models
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ProductModel(
     @SerializedName("id") val id: Int?,
     @SerializedName("code") val code: String?,
@@ -30,8 +33,9 @@ data class ProductModel(
     @SerializedName("shop") val shop: ShopModel?,
     @SerializedName("category") val category: ParentCategoryModel?,
     @SerializedName("images") val images: ArrayList<PhotoModel>?
-)
+): Parcelable
 
+@Parcelize
 data class ShopModel(
     @SerializedName("id") val id: Int?,
     @SerializedName("name") val name: String?,
@@ -51,4 +55,4 @@ data class ShopModel(
     @SerializedName("cover") val coverPhoto: PhotoModel?,
     @SerializedName("share_url") val shareUrl: String?,
     @SerializedName("logo") val logo: PhotoModel?
-)
+): Parcelable

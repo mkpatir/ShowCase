@@ -8,6 +8,7 @@ import com.mkpatir.showcase.R
 import com.mkpatir.showcase.databinding.ActivityHomeBinding
 import com.mkpatir.showcase.ui.base.BaseActivity
 import com.mkpatir.showcase.ui.home.featured.FeaturedAdapter
+import com.mkpatir.showcase.ui.showall.ShowAllActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
@@ -82,6 +83,18 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     private fun initListeners(){
         productsAdapter.allClick = {
+            ShowAllActivity.startActivity(this,DiscoverTypes.NEW_PRODUCTS,getViewModel().productsTitle,getViewModel().discoverList)
+        }
+
+        collectionsAdapter.allClick = {
+
+        }
+
+        editorShopsAdapter.allClick = {
+
+        }
+
+        newShopsAdapter.allClick = {
 
         }
     }

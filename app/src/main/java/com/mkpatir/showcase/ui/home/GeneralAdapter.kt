@@ -39,7 +39,7 @@ class GeneralAdapter(
         fun bind(){
             dataBinding.apply {
                 rvItems.adapter = ProductItemAdapter().apply {
-                    updateAdapter(productItems)
+                    updateAdapter(productItems,false)
                 }
                 titleProducts.text = title
                 btnAll.setOnClickListener {

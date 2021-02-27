@@ -9,6 +9,8 @@ class HomeViewModel(
         private val appRepository: AppRepository
 ): BaseViewModel() {
 
+    val discoverList: ArrayList<DiscoverResponseModel> = arrayListOf()
+
     val featuredLiveData = MutableLiveData<ArrayList<FeaturedModel>>()
     val productsLiveData = MutableLiveData<ArrayList<ProductModel>>()
     val categoriesLiveData = MutableLiveData<ArrayList<CategoryModel>>()
@@ -24,6 +26,8 @@ class HomeViewModel(
 
     fun discover(){
         callService(appRepository.discover()) { list ->
+            discoverList.clear()
+            discoverList.addAll(list)
             list.find { item -> item.type == FEATURED }?.let { featuredLiveData.postValue(it.featured) }
             list.find { item -> item.type == PRODUCTS }?.let {
                 productsTitle = it.title.orEmpty()
@@ -50,11 +54,11 @@ class HomeViewModel(
 
     companion object {
         private const val FEATURED = "featured"
-        private const val PRODUCTS = "new_products"
+        const val PRODUCTS = "new_products"
         private const val CATEGORIES = "categories"
-        private const val COLLECTIONS = "collections"
-        private const val EDITOR_SHOPS = "editor_shops"
-        private const val NEW_SHOPS = "new_shops"
+        const val COLLECTIONS = "collections"
+        const val EDITOR_SHOPS = "editor_shops"
+        const val NEW_SHOPS = "new_shops"
     }
 
 }
