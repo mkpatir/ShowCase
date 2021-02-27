@@ -51,6 +51,7 @@ dependencies {
     implementation androidDependencies.coroutineAndroid
     implementation androidDependencies.viewModelLifecycle
     implementation androidDependencies.recyclerView
+    implementation androidDependencies.swipeRefreshLayout
 
     implementation thirdPartyDependencies.koin
     implementation thirdPartyDependencies.koinScope

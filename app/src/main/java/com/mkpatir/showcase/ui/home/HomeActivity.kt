@@ -13,13 +13,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
-    private val featuredAdapter = FeaturedAdapter()
-    private val productsAdapter = GeneralAdapter(DiscoverTypes.NEW_PRODUCTS)
-    private val categoriesAdapter = GeneralAdapter(DiscoverTypes.CATEGORIES)
-    private val collectionsAdapter = GeneralAdapter(DiscoverTypes.COLLECTIONS)
-    private val editorShopsAdapter = GeneralAdapter(DiscoverTypes.EDITOR_SHOPS)
-    private val newShopsAdapter = GeneralAdapter(DiscoverTypes.NEW_SHOPS)
-    private val contentAdapter = ConcatAdapter(
+    private var featuredAdapter = FeaturedAdapter()
+    private var productsAdapter = GeneralAdapter(DiscoverTypes.NEW_PRODUCTS)
+    private var categoriesAdapter = GeneralAdapter(DiscoverTypes.CATEGORIES)
+    private var collectionsAdapter = GeneralAdapter(DiscoverTypes.COLLECTIONS)
+    private var editorShopsAdapter = GeneralAdapter(DiscoverTypes.EDITOR_SHOPS)
+    private var newShopsAdapter = GeneralAdapter(DiscoverTypes.NEW_SHOPS)
+    private var contentAdapter = ConcatAdapter(
         featuredAdapter,
         productsAdapter,
         categoriesAdapter,
@@ -36,8 +36,6 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         getDataBinding().apply {
             val searchManager = getSystemService(Context.SEARCH_SERVICE) as SearchManager
             searchView.setSearchableInfo(searchManager.getSearchableInfo(componentName))
-
-            rvContent.adapter = contentAdapter
         }
 
         getViewModel().discover()
@@ -55,6 +53,13 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
     private fun initObservers(){
         getViewModel().apply {
+
+            progressLiveData.observe(this@HomeActivity){
+                if (it.not()){
+                    getDataBinding().rvContent.adapter = contentAdapter
+                }
+            }
+
             featuredLiveData.observe(this@HomeActivity){
                 featuredAdapter.updateAdapter(it)
             }
@@ -96,6 +101,12 @@ class HomeActivity: BaseActivity<ActivityHomeBinding, HomeViewModel>() {
 
         newShopsAdapter.allClick = {
             ShowAllActivity.startActivity(this,DiscoverTypes.NEW_SHOPS,getViewModel().newShopTitle,getViewModel().discoverList)
+        }
+
+        getDataBinding().swipeRefresh.setOnRefreshListener {
+            getDataBinding().swipeRefresh.isRefreshing = false
+            getDataBinding().rvContent.adapter = null
+            getViewModel().discover()
         }
     }
 
